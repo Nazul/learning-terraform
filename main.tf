@@ -26,7 +26,7 @@ module "blog_vpc" {
   enable_nat_gateway = true
 
   tags = {
-    Terraform = "true"
+    Terraform   = "true"
     Environment = "Dev"
   }
 }
@@ -38,7 +38,8 @@ resource "aws_instance" "blog" {
   vpc_security_group_ids = [module.blog_sg.security_group_id]
 
   tags = {
-    Name = "HelloWorld"
+    Terraform = "true"
+    Name      = "HelloWorld"
   }
 }
 
@@ -63,7 +64,7 @@ module "alb" {
       targets = {
         my_target = {
           target_id = aws_instance.blog.id
-          port = 80
+          port      = 80
         }
       }
     }
@@ -78,6 +79,7 @@ module "alb" {
   ]
 
   tags = {
+    Terraform = "true"
     Environment = "Dev"
   }
 }
