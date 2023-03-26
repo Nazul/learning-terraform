@@ -86,7 +86,7 @@ module "blog_alb" {
 module "blog_sg" {
   source  = "terraform-aws-modules/security-group/aws"
   version = "4.17.1"
-  name    = ${var.environment.name}-blog-sg"
+  name    = "${var.environment.name}-blog-sg"
 
   vpc_id = module.blog_vpc.vpc_id
 
